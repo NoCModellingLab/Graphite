@@ -1,23 +1,42 @@
-# object files
+# Prerequisites
 *.d
+
+# Compiled Object files
+*.slo
+*.lo
 *.o
-*.pyc
+*.obj
 
-# emacs temp files
-*~
+# Precompiled Headers
+*.gch
+*.pch
 
-# vi temp files
-*.swp
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# test output
-pin.log
-pintool.log
-sim.out
+# Fortran module files
+*.mod
+*.smod
 
-# misc
-lib/libcarbon_sim.a
-lib/pin_sim.so
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
 
-# result files
-results/
-!results/.DO_NOT_DELETE
+# Executables
+*.exe
+*.out
+*.app
+
+# Certain Directories
+Graphite/results/*
+*/Graphite/results/latest
+*latest
+Graphite/technology/*
+Graphite/tools/*
+Graphite/qemu/*
+Graphite/pin/*
+

@@ -1,0 +1,39 @@
+num=64
+
+"""making array of 0s"""
+
+"""tracking the line"""
+loop=1
+"""'i' is the number it's jumping by. e.g. line 1-3-5-7-1 is jumping by 2, 1-5-1 is jumping by 4"""
+forall  i = [1, cluster_size) do 
+	
+	if  i is greater than half the size of the cluster then
+		lines = num #the number of lines that will be made is equal to the size of the cluster
+	else:
+		lines = i #the number of lines that will be made is equal to i (the step)
+
+	forall j = [0,lines) j in range(lines):
+		"""'loop' only increases if something has been added to 'arr' (a connection was made)"""
+		"""j: starting number, num+j: the overlap point, i:jump val"""
+		for m in sequence [j, num + j) with steps i do
+			"""maps m values to values in the range of the cluster.
+			in a cluster of 8, 8 will map to 0, 9 will map to 1, etc"""
+			l = m modulo num
+
+			if the node that will be connected to is past the overlap point OR the nodes are already connected then
+				arr[l][(l+i) modulo num] = loop
+				#print("from "+str(j)+" to "+str(num+j-1) + " by "+str(i) + ", at "+ str(l) + "," + str((l+i)%num))
+
+		if a connection was made then
+			loop += 1
+			#print(loop)
+
+		"""make reverse connections"""
+		"""NOTE: sometimes this makes the connections in an unexpected order, but it doesn't seem to be wrong in any way"""
+		for m in sequence [num+j, j-1) with steps -i
+			l = m modulo num
+			if the node that will be connected to is past the overlap point OR the nodes are already connected then
+				arr[l][(l+num-i)%num] = loop
+
+		if a connection was made:
+			loop+=1
